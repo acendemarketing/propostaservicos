@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Acende Marketing — Nossos Serviços</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;0,9..144,900;1,9..144,700;1,9..144,900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --fire:  #E8873A;
+    --ember: #C45E1A;
+    --spark: #F5A55C;
+    --coal:  #1A1410;
+    --coal2: #221C16;
+    --coal3: #2E251C;
+    --straw: #F5F0E8;
+    --muted: #8A7E6E;
+    --text:  #F0EAE0;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--coal);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 999;
+  }
+
+  .page { max-width: 900px; margin: 0 auto; padding: 0 36px 100px; }
+
+  /* ── NAV ── */
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 32px 0;
+    border-bottom: 1px solid rgba(232,135,58,.1);
+    margin-bottom: 0;
+  }
+
+  .nav-brand { display: flex; align-items: center; gap: 10px; }
+
+  .nav-brand svg { width: 28px; height: 28px; }
+
+  .brand-name {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--straw);
+    letter-spacing: .03em;
+  }
+
+  .brand-name span { color: var(--fire); }
+
+  .nav-cta {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--fire);
+    text-decoration: none;
+    border: 1px solid rgba(232,135,58,.4);
+    padding: 8px 20px;
+    transition: all .2s;
+  }
+
+  .nav-cta:hover {
+    background: var(--fire);
+    color: var(--coal);
+  }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 88vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 0 60px;
+    position: relative;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 5%;
+    right: -160px;
+    width: 480px;
+    height: 480px;
+    background: radial-gradient(circle at 40% 40%, rgba(232,135,58,.15) 0%, transparent 68%);
+    pointer-events: none;
+    animation: glow 7s ease-in-out infinite;
+  }
+
+  @keyframes glow {
+    0%,100% { opacity:1; transform:scale(1); }
+    50%      { opacity:.65; transform:scale(1.1); }
+  }
+
+  .eyebrow {
+    font-size: 11px;
+    letter-spacing: .24em;
+    text-transform: uppercase;
+    color: var(--fire);
+    font-weight: 500;
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    animation: fadeUp .6s .05s ease both;
+    opacity: 0;
+  }
+
+  .eyebrow::before {
+    content: '';
+    display: block;
+    width: 28px;
+    height: 1px;
+    background: var(--fire);
+    flex-shrink: 0;
+  }
+
+  h1 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(42px, 7vw, 76px);
+    font-weight: 900;
+    line-height: 1.02;
+    letter-spacing: -1.5px;
+    animation: fadeUp .7s .15s ease both;
+    opacity: 0;
+  }
+
+  h1 em { font-style: italic; color: var(--fire); }
+
+  .hero-sub {
+    font-size: 17px;
+    color: var(--muted);
+    max-width: 520px;
+    margin-top: 24px;
+    line-height: 1.8;
+    font-weight: 300;
+    animation: fadeUp .7s .28s ease both;
+    opacity: 0;
+  }
+
+  .hero-sub strong { color: var(--text); font-weight: 500; }
+
+  /* audiencias */
+  .audience-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 36px;
+    animation: fadeUp .7s .4s ease both;
+    opacity: 0;
+  }
+
+  .pill {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(232,135,58,.08);
+    border: 1px solid rgba(232,135,58,.2);
+    padding: 8px 16px;
+    font-size: 13px;
+    color: var(--spark);
+    font-weight: 400;
+  }
+
+  .pill-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--fire);
+    flex-shrink: 0;
+  }
+
+  .slogan-strip {
+    margin-top: 44px;
+    padding: 18px 0;
+    border-top: 1px solid rgba(232,135,58,.18);
+    border-bottom: 1px solid rgba(232,135,58,.18);
+    font-family: 'Fraunces', serif;
+    font-size: 15px;
+    font-style: italic;
+    color: var(--spark);
+    animation: fadeUp .7s .5s ease both;
+    opacity: 0;
+  }
+
+  /* ── INTRO ── */
+  .intro-block {
+    background: var(--coal2);
+    border: 1px solid rgba(232,135,58,.15);
+    border-left: 3px solid var(--fire);
+    padding: 44px 44px 44px 40px;
+    margin-bottom: 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .intro-block::before {
+    content: '"';
+    font-family: 'Fraunces', serif;
+    font-size: 200px;
+    color: rgba(232,135,58,.04);
+    position: absolute;
+    top: -40px; left: 12px;
+    line-height: 1;
+    pointer-events: none;
+  }
+
+  .intro-block p {
+    font-size: 16px;
+    line-height: 1.9;
+    color: #c8bfb2;
+    font-weight: 300;
+    position: relative;
+  }
+
+  .intro-block strong { color: var(--spark); font-weight: 500; }
+
+  /* ── SECTION ── */
+  .sec-label {
+    font-size: 10px;
+    letter-spacing: .28em;
+    text-transform: uppercase;
+    color: var(--fire);
+    font-weight: 500;
+    margin-bottom: 10px;
+  }
+
+  h2 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(28px, 4vw, 40px);
+    font-weight: 700;
+    line-height: 1.12;
+    margin-bottom: 40px;
+  }
+
+  h2 em { font-style: italic; color: var(--spark); }
+
+  /* ── SERVICES — layout editorial ── */
+  .services-section { margin-bottom: 88px; }
+
+  /* card grande — destaque */
+  .svc-featured {
+    display: grid;
+    grid-template-columns: 1fr 1.6fr;
+    border: 1px solid rgba(232,135,58,.22);
+    background: linear-gradient(135deg, var(--coal3) 0%, var(--coal2) 100%);
+    margin-bottom: 16px;
+    position: relative;
+    overflow: hidden;
+    transition: border-color .25s;
+  }
+
+  .svc-featured:hover { border-color: rgba(232,135,58,.5); }
+
+  .svc-featured::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 0; height: 2px;
+    background: var(--fire);
+    transition: width .4s ease;
+  }
+
+  .svc-featured:hover::after { width: 100%; }
+
+  .svc-left {
+    padding: 40px 32px;
+    border-right: 1px solid rgba(232,135,58,.12);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .svc-right {
+    padding: 40px 36px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .svc-num {
+    font-family: 'Fraunces', serif;
+    font-size: 64px;
+    color: rgba(232,135,58,.15);
+    font-weight: 900;
+    line-height: 1;
+    margin-bottom: 20px;
+  }
+
+  .svc-icon {
+    font-size: 32px;
+    margin-bottom: 12px;
+  }
+
+  .svc-title {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--straw);
+    line-height: 1.2;
+  }
+
+  .svc-desc {
+    font-size: 14px;
+    color: #bbb0a4;
+    line-height: 1.8;
+    font-weight: 300;
+    margin-bottom: 20px;
+  }
+
+  .svc-items {
+    list-style: none;
+  }
+
+  .svc-items li {
+    font-size: 13px;
+    color: var(--muted);
+    padding: 6px 0;
+    border-bottom: 1px solid rgba(255,255,255,.04);
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-weight: 300;
+    line-height: 1.5;
+  }
+
+  .svc-items li:last-child { border-bottom: none; }
+
+  .svc-items li::before {
+    content: '→';
+    color: var(--fire);
+    flex-shrink: 0;
+    font-size: 11px;
+    margin-top: 2px;
+  }
+
+  /* grid 2 colunas para os demais */
+  .svc-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+
+  .svc-card {
+    background: var(--coal2);
+    border: 1px solid rgba(232,135,58,.15);
+    padding: 32px 28px;
+    position: relative;
+    overflow: hidden;
+    transition: background .25s, border-color .25s;
+  }
+
+  .svc-card:hover {
+    background: var(--coal3);
+    border-color: rgba(232,135,58,.35);
+  }
+
+  .svc-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 0; height: 2px;
+    background: var(--fire);
+    transition: width .35s ease;
+  }
+
+  .svc-card:hover::after { width: 100%; }
+
+  .svc-card .svc-num {
+    font-size: 42px;
+    margin-bottom: 16px;
+  }
+
+  .svc-card .svc-title {
+    font-size: 17px;
+    margin-bottom: 10px;
+  }
+
+  /* card wide — linha editorial */
+  .svc-wide {
+    background: var(--coal2);
+    border: 1px solid rgba(232,135,58,.15);
+    padding: 36px;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 40px;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    transition: border-color .25s;
+  }
+
+  .svc-wide:hover { border-color: rgba(232,135,58,.38); }
+
+  .svc-wide::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 0; height: 2px;
+    background: var(--fire);
+    transition: width .35s;
+  }
+
+  .svc-wide:hover::after { width: 100%; }
+
+  /* ── DIFERENCIAIS ── */
+  .diff-section { margin-bottom: 88px; }
+
+  .diff-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: rgba(232,135,58,.1);
+    border: 1px solid rgba(232,135,58,.1);
+  }
+
+  .diff-item {
+    background: var(--coal2);
+    padding: 32px 24px;
+    text-align: center;
+    transition: background .2s;
+  }
+
+  .diff-item:hover { background: var(--coal3); }
+
+  .diff-icon { font-size: 28px; margin-bottom: 14px; }
+
+  .diff-val {
+    font-family: 'Fraunces', serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--fire);
+    margin-bottom: 6px;
+    line-height: 1.2;
+  }
+
+  .diff-lbl {
+    font-size: 12px;
+    color: var(--muted);
+    font-weight: 300;
+    line-height: 1.5;
+  }
+
+  /* ── AUDIÊNCIAS ── */
+  .aud-section { margin-bottom: 88px; }
+
+  .aud-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+
+  .aud-card {
+    background: var(--coal2);
+    border: 1px solid rgba(232,135,58,.15);
+    padding: 28px 22px;
+    transition: all .2s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .aud-card:hover {
+    border-color: rgba(232,135,58,.4);
+    background: var(--coal3);
+  }
+
+  .aud-emoji { font-size: 28px; margin-bottom: 12px; }
+
+  .aud-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--straw);
+    margin-bottom: 8px;
+  }
+
+  .aud-list {
+    list-style: none;
+  }
+
+  .aud-list li {
+    font-size: 12px;
+    color: var(--muted);
+    padding: 3px 0;
+    font-weight: 300;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .aud-list li::before {
+    content: '·';
+    color: var(--fire);
+    font-size: 16px;
+    line-height: 1;
+  }
+
+  /* ── CTA ── */
+  .cta-block {
+    text-align: center;
+    padding: 72px 48px;
+    border: 1px solid rgba(232,135,58,.22);
+    background: linear-gradient(150deg, var(--coal3) 0%, var(--coal2) 100%);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-block::before {
+    content: '';
+    position: absolute;
+    bottom: -80px; left: 50%;
+    transform: translateX(-50%);
+    width: 500px; height: 300px;
+    background: radial-gradient(ellipse, rgba(232,135,58,.1) 0%, transparent 65%);
+    pointer-events: none;
+  }
+
+  .cta-block h2 { margin-bottom: 16px; }
+
+  .cta-block p {
+    color: var(--muted);
+    font-size: 15px;
+    margin-bottom: 40px;
+    font-weight: 300;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .cta-btn {
+    display: inline-block;
+    background: var(--fire);
+    color: var(--coal);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    padding: 17px 44px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: background .2s, transform .15s, box-shadow .2s;
+  }
+
+  .cta-btn:hover {
+    background: var(--spark);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 32px rgba(232,135,58,.28);
+  }
+
+  /* ── FOOTER ── */
+  .footer {
+    margin-top: 56px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 28px;
+    border-top: 1px solid rgba(255,255,255,.05);
+  }
+
+  .footer-brand {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--straw);
+  }
+
+  .footer-brand span { color: var(--fire); }
+
+  .footer-info {
+    font-size: 12px;
+    color: var(--muted);
+    text-align: right;
+    font-weight: 300;
+    line-height: 1.7;
+  }
+
+  /* ── ANIM ── */
+  @keyframes fadeUp {
+    from { opacity:0; transform:translateY(18px); }
+    to   { opacity:1; transform:translateY(0); }
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 680px) {
+    .page { padding: 0 20px 60px; }
+    .svc-featured { grid-template-columns: 1fr; }
+    .svc-left { border-right: none; border-bottom: 1px solid rgba(232,135,58,.12); padding: 28px 24px; }
+    .svc-right { padding: 28px 24px; }
+    .svc-grid { grid-template-columns: 1fr; }
+    .svc-wide { grid-template-columns: 1fr; gap: 16px; }
+    .diff-grid { grid-template-columns: 1fr 1fr; }
+    .aud-grid { grid-template-columns: 1fr; }
+    .cta-block { padding: 48px 24px; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-brand">
+      <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M18 32C11.373 32 6 26.627 6 20c0-4.5 2-8 5-10.5-.5 2.5.5 4.5 2 5.5C13 9 16 5 18 2c0 5 3 8 4.5 9.5 1-1.5 1.5-3.5 1-5.5C26.5 8.5 30 13 30 20c0 6.627-5.373 12-12 12z" fill="#E8873A" opacity=".9"/>
+        <path d="M18 28c-3.314 0-6-2.686-6-6 0-2.5 1.5-4.5 3-5.5 0 1.5.8 2.8 2 3.5C17 17.5 18 15 18 13c0 3 2 5 3 6 .5-.8.8-1.8.7-2.8C23.5 17.5 24 19 24 22c0 3.314-2.686 6-6 6z" fill="#F5A55C"/>
+      </svg>
+      <div class="brand-name">Acende<span>.</span>Marketing</div>
+    </div>
+    <a class="nav-cta" href="https://wa.me/5521965398353" target="_blank">Fale conosco →</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="eyebrow">Serviços estratégicos de presença digital</div>
+    <h1>A faísca que<br>faltava na sua <em>marca.</em></h1>
+    <p class="hero-sub">
+      Cuidamos da sua presença digital de ponta a ponta — para que você foque no que faz de melhor enquanto <strong>sua marca cresce, atrai e converte.</strong>
+    </p>
+
+    <div class="audience-pills">
+      <div class="pill"><div class="pill-dot"></div>Profissionais de saúde</div>
+      <div class="pill"><div class="pill-dot"></div>Autônomos</div>
+      <div class="pill"><div class="pill-dot"></div>Negócios locais</div>
+      <div class="pill"><div class="pill-dot"></div>Prestadores de serviço</div>
+    </div>
+
+    <div class="slogan-strip">
+      Conteúdo com intenção. Resultado com propósito.
+    </div>
+  </section>
+
+  <!-- INTRO -->
+  <div class="intro-block">
+    <p>
+      Ter presença nas redes sociais não é mais opcional — é o <strong>cartão de visitas digital</strong> do seu negócio. Mas fazer isso bem, com consistência e estratégia, exige tempo, criatividade e conhecimento que poucos têm disponível no dia a dia.<br><br>
+      A Acende Marketing resolve isso. Desenvolvemos cada serviço pensando em <strong>quem precisa ser visto, encontrado e lembrado</strong> — seja você médico, nutricionista, esteticista, personal trainer ou dono de um negócio local.
+    </p>
+  </div>
+
+  <!-- SERVIÇOS -->
+  <section class="services-section">
+    <div class="sec-label">O que fazemos</div>
+    <h2>Serviços pensados<br>para <em>gerar resultado.</em></h2>
+
+    <!-- 01 — Linha Editorial — destaque -->
+    <div class="svc-featured">
+      <div class="svc-left">
+        <div>
+          <div class="svc-num">01</div>
+          <div class="svc-icon">🗓️</div>
+          <div class="svc-title">Criação de Linha Editorial</div>
+        </div>
+        <div style="margin-top:20px;">
+          <span style="font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--fire);font-weight:500;">Fundação da estratégia</span>
+        </div>
+      </div>
+      <div class="svc-right">
+        <p class="svc-desc">
+          A linha editorial é o mapa do seu conteúdo. Definimos os pilares temáticos, o tom de voz, os formatos ideais e o ritmo de publicação — tudo alinhado ao seu público e objetivos. Com isso, cada post tem intenção, não é sorte.
+        </p>
+        <ul class="svc-items">
+          <li>Definição de pilares de conteúdo (educativo, vendas, autoridade, conexão)</li>
+          <li>Calendário editorial mensal com datas e temas</li>
+          <li>Tom de voz e linguagem alinhados ao seu perfil</li>
+          <li>Planejamento de datas sazonais e oportunidades de nicho</li>
+          <li>Revisão e ajuste trimestral da estratégia</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 02 e 03 — grid 2 colunas -->
+    <div class="svc-grid">
+      <div class="svc-card">
+        <div class="svc-num">02</div>
+        <div class="svc-icon">⚙️</div>
+        <div class="svc-title">Gestão Estratégica Completa</div>
+        <p class="svc-desc" style="margin-top:10px;">Da criação ao agendamento — gerenciamos tudo para que sua presença digital seja consistente, profissional e livre de imprevistos.</p>
+        <ul class="svc-items">
+          <li>Criação e publicação de conteúdo nas redes</li>
+          <li>Gestão de stories, feed e interações</li>
+          <li>Monitoramento de métricas e engajamento</li>
+          <li>Relatório mensal de desempenho</li>
+        </ul>
+      </div>
+
+      <div class="svc-card">
+        <div class="svc-num">03</div>
+        <div class="svc-icon">🎨</div>
+        <div class="svc-title">Pack de Design de Posts</div>
+        <p class="svc-desc" style="margin-top:10px;">Artes profissionais com identidade visual consistente — posts, stories, carrosséis e artes de divulgação que comunicam autoridade em cada detalhe.</p>
+        <ul class="svc-items">
+          <li>Identidade visual exclusiva para o perfil</li>
+          <li>Posts, carrosséis e stories mensais</li>
+          <li>Artes de lançamento e datas especiais</li>
+          <li>Revisão e aprovação prévia de cada peça</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 04 — Captação — wide -->
+    <div class="svc-wide" style="margin-bottom:16px;">
+      <div>
+        <div class="svc-num" style="font-size:52px;">04</div>
+        <div class="svc-icon">🎬</div>
+        <div class="svc-title" style="font-family:'Fraunces',serif;font-size:20px;font-weight:700;color:var(--straw);">Captação de Conteúdo</div>
+      </div>
+      <div>
+        <p class="svc-desc">Orientamos e produzimos os materiais de vídeo e foto que você precisa para gerar conteúdo autêntico — com roteiro, direção e edição para que tudo saia certo e transmita credibilidade e personalidade.</p>
+        <ul class="svc-items">
+          <li>Roteiro e briefing para gravações</li>
+          <li>Direção remota ou presencial das gravações</li>
+          <li>Edição de vídeos para Reels, Stories e feed</li>
+          <li>Legendas, cortes e identidade visual nos vídeos</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 05 — Análise — wide -->
+    <div class="svc-wide">
+      <div>
+        <div class="svc-num" style="font-size:52px;">05</div>
+        <div class="svc-icon">📊</div>
+        <div class="svc-title" style="font-family:'Fraunces',serif;font-size:20px;font-weight:700;color:var(--straw);">Análise Estratégica de Perfil</div>
+      </div>
+      <div>
+        <p class="svc-desc">Auditamos o seu perfil atual nas redes sociais com olhar estratégico — identificamos o que está funcionando, o que está travando seu crescimento e entregamos um plano de ação claro para evoluir.</p>
+        <ul class="svc-items">
+          <li>Diagnóstico completo do perfil e conteúdo atual</li>
+          <li>Análise de concorrentes e benchmarking do nicho</li>
+          <li>Relatório com pontos de melhoria prioritários</li>
+          <li>Plano de ação com próximos passos concretos</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- DIFERENCIAIS -->
+  <section class="diff-section">
+    <div class="sec-label">Por que a Acende</div>
+    <h2>O que nos<br><em>diferencia.</em></h2>
+    <div class="diff-grid">
+      <div class="diff-item">
+        <div class="diff-icon">🎯</div>
+        <div class="diff-val">Conteúdo com intenção</div>
+        <div class="diff-lbl">Nada publicado sem estratégia e objetivo definidos</div>
+      </div>
+      <div class="diff-item">
+        <div class="diff-icon">✅</div>
+        <div class="diff-val">Aprovação prévia</div>
+        <div class="diff-lbl">Todo conteúdo revisado e aprovado por você antes de publicar</div>
+      </div>
+      <div class="diff-item">
+        <div class="diff-icon">🔥</div>
+        <div class="diff-val">Foco no seu nicho</div>
+        <div class="diff-lbl">Especialistas em saúde, autônomos e negócios locais</div>
+      </div>
+      <div class="diff-item">
+        <div class="diff-icon">💬</div>
+        <div class="diff-val">Atendimento direto</div>
+        <div class="diff-lbl">Comunicação via WhatsApp, sem burocracia</div>
+      </div>
+      <div class="diff-item">
+        <div class="diff-icon">📈</div>
+        <div class="diff-val">Métricas reais</div>
+        <div class="diff-lbl">Relatórios mensais claros com dados de crescimento</div>
+      </div>
+      <div class="diff-item">
+        <div class="diff-icon">🤝</div>
+        <div class="diff-val">Parceria de verdade</div>
+        <div class="diff-lbl">Crescemos juntos — seu sucesso é o nosso objetivo</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PARA QUEM É -->
+  <section class="aud-section">
+    <div class="sec-label">Para quem é</div>
+    <h2>Feito para quem<br><em>tem propósito.</em></h2>
+    <div class="aud-grid">
+      <div class="aud-card">
+        <div class="aud-emoji">🏥</div>
+        <div class="aud-title">Profissionais de saúde</div>
+        <ul class="aud-list">
+          <li>Médicos e especialistas</li>
+          <li>Dentistas e odontologistas</li>
+          <li>Nutricionistas</li>
+          <li>Psicólogos e terapeutas</li>
+          <li>Fisioterapeutas</li>
+          <li>Esteticistas e dermatologistas</li>
+        </ul>
+      </div>
+      <div class="aud-card">
+        <div class="aud-emoji">💼</div>
+        <div class="aud-title">Autônomos e liberais</div>
+        <ul class="aud-list">
+          <li>Personal trainers</li>
+          <li>Coaches e mentores</li>
+          <li>Advogados e contadores</li>
+          <li>Arquitetos e decoradores</li>
+          <li>Fotógrafos e videomakers</li>
+          <li>Consultores independentes</li>
+        </ul>
+      </div>
+      <div class="aud-card">
+        <div class="aud-emoji">📍</div>
+        <div class="aud-title">Negócios e serviços locais</div>
+        <ul class="aud-list">
+          <li>Clínicas e consultórios</li>
+          <li>Salões e estúdios de beleza</li>
+          <li>Academias e estúdios fit</li>
+          <li>Restaurantes e cafeterias</li>
+          <li>Pet shops e clínicas vets</li>
+          <li>Lojas e comércios locais</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <div class="cta-block">
+    <div class="sec-label" style="text-align:center;margin-bottom:16px;">Próximo passo</div>
+    <h2>Pronto para <em>acender</em><br>sua presença digital?</h2>
+    <p>Fale com a gente e descubra qual serviço faz mais sentido para o seu momento.</p>
+    <a class="cta-btn" href="https://wa.me/5521965398353" target="_blank">Quero começar agora →</a>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-brand">Acende<span>.</span>Marketing</div>
+    <div class="footer-info">
+      Conteúdo com intenção. Resultado com propósito.<br>
+      © 2025 — Todos os direitos reservados
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
